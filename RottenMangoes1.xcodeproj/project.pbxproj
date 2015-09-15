@@ -15,6 +15,7 @@
 		AAA08C281BA7701D00A05058 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAA08C261BA7701D00A05058 /* LaunchScreen.xib */; };
 		AAA08C341BA7701D00A05058 /* RottenMangoes1Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = AAA08C331BA7701D00A05058 /* RottenMangoes1Tests.m */; };
 		AAA08C3F1BA7702900A05058 /* Movie.m in Sources */ = {isa = PBXBuildFile; fileRef = AAA08C3E1BA7702900A05058 /* Movie.m */; };
+		AAA08C421BA7786C00A05058 /* MovieCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AAA08C411BA7786C00A05058 /* MovieCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +44,8 @@
 		AAA08C331BA7701D00A05058 /* RottenMangoes1Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RottenMangoes1Tests.m; sourceTree = "<group>"; };
 		AAA08C3D1BA7702900A05058 /* Movie.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Movie.h; path = ../Movie.h; sourceTree = "<group>"; };
 		AAA08C3E1BA7702900A05058 /* Movie.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Movie.m; path = ../Movie.m; sourceTree = "<group>"; };
+		AAA08C401BA7786C00A05058 /* MovieCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MovieCell.h; sourceTree = "<group>"; };
+		AAA08C411BA7786C00A05058 /* MovieCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MovieCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +93,8 @@
 				AAA08C1F1BA7701D00A05058 /* ViewController.m */,
 				AAA08C3D1BA7702900A05058 /* Movie.h */,
 				AAA08C3E1BA7702900A05058 /* Movie.m */,
+				AAA08C401BA7786C00A05058 /* MovieCell.h */,
+				AAA08C411BA7786C00A05058 /* MovieCell.m */,
 				AAA08C211BA7701D00A05058 /* Main.storyboard */,
 				AAA08C241BA7701D00A05058 /* Images.xcassets */,
 				AAA08C261BA7701D00A05058 /* LaunchScreen.xib */,
@@ -225,6 +230,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AAA08C201BA7701D00A05058 /* ViewController.m in Sources */,
+				AAA08C421BA7786C00A05058 /* MovieCell.m in Sources */,
 				AAA08C1D1BA7701D00A05058 /* AppDelegate.m in Sources */,
 				AAA08C3F1BA7702900A05058 /* Movie.m in Sources */,
 				AAA08C1A1BA7701D00A05058 /* main.m in Sources */,

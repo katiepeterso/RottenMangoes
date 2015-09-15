@@ -13,7 +13,8 @@
 
 @property (nonatomic) NSString *movieTitle;
 @property (nonatomic) NSNumber *movieRunTime;
-@property (nonatomic) UIImage *moviePoster;
+@property (nonatomic) NSString *moviePosterURLString;
+@property (nonatomic) NSString *movieThumbnailURLString;
 @property (nonatomic) NSString *movieReleaseDate;
 @property (nonatomic) NSString *movieSynopsis;
 @property (nonatomic) NSArray *movieReviews;
@@ -21,5 +22,7 @@
 @property (nonatomic) NSString *movieMPAARating;
 
 - (void)movieWithJSON:(NSDictionary *)json;
+
+- (NSString *)getHighResImageWithURL:(NSString *)urlString;
 
 @end
