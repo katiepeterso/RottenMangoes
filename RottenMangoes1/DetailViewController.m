@@ -8,6 +8,7 @@
 
 #import "DetailViewController.h"
 #import "Movie.h"
+#import "Review.h"
 
 @interface DetailViewController ()
 @property (weak, nonatomic) IBOutlet UIImageView *detailMovieImageView;
@@ -16,6 +17,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *detailRatingLabel;
 @property (weak, nonatomic) IBOutlet UILabel *detailReleaseLabel;
 @property (weak, nonatomic) IBOutlet UILabel *detailRunTimeLabel;
+@property (nonatomic) Review *currentReview;
+@property (nonatomic) NSMutableArray *reviews;
+@property (weak, nonatomic) IBOutlet UILabel *detailReviewsLabel;
 
 @end
 
@@ -67,6 +71,32 @@
         }];
         
         [downloadTask resume];
+        
+        self.reviews = [NSMutableArray new];
+        NSURLSessionTask *reviewTask = [session dataTaskWithURL:[NSURL URLWithString:self.detailItem.movieReviewURL] completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+            
+            if (!error) {
+                
+                NSError *jsonError = nil;
+                
+                NSArray *reviewsArray = [NSJSONSerialization JSONObjectWithData:data options:0 error:&jsonError][@"reviews"];
+                
+                for (NSDictionary *eachReview in reviewsArray){
+                    self.currentReview = [Review new];
+                    [self.currentReview reviewWithJSON:eachReview];
+                    
+                    [self.reviews addObject:self.currentReview.reviewQuote];
+                }
+                
+                dispatch_async(dispatch_get_main_queue(), ^{
+    
+                    self.detailReviewsLabel.text = [@"Reviews\n\n" stringByAppendingString:[self.reviews componentsJoinedByString:@"\n\n"]];
+                });
+            }
+        }];
+        
+        [reviewTask resume];
+
     }
 }
 @end

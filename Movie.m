@@ -19,7 +19,7 @@
     
     self.movieRunTime = json[@"runtime"];
     self.movieSynopsis = json[@"synopsis"];
-    self.movieReviews = json[@"reviews"];
+    self.movieReviewURL = [json[@"links"][@"reviews"] stringByAppendingString:@"?apikey=j9fhnct2tp8wu2q9h75kanh9&page_limit=3"];
     self.movieRatings = json[@"ratings"];
 }
 

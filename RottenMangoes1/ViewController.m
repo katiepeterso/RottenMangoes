@@ -45,7 +45,7 @@ NSString * const urlString = @"http://api.rottentomatoes.com/api/public/v1.0/lis
             for (NSDictionary *eachMovie in moviesArray){
                 self.currentMovie = [Movie new];
                 [self.currentMovie movieWithJSON:eachMovie];
-                
+                                
                 [self.movies addObject:self.currentMovie];
             }
             

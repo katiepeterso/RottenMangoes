@@ -17,6 +17,7 @@
 		AAA08C3F1BA7702900A05058 /* Movie.m in Sources */ = {isa = PBXBuildFile; fileRef = AAA08C3E1BA7702900A05058 /* Movie.m */; };
 		AAA08C421BA7786C00A05058 /* MovieCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AAA08C411BA7786C00A05058 /* MovieCell.m */; };
 		AAA08C451BA79D2E00A05058 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AAA08C441BA79D2E00A05058 /* DetailViewController.m */; };
+		AAA08C481BA7C53D00A05058 /* Review.m in Sources */ = {isa = PBXBuildFile; fileRef = AAA08C471BA7C53D00A05058 /* Review.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,8 @@
 		AAA08C411BA7786C00A05058 /* MovieCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MovieCell.m; sourceTree = "<group>"; };
 		AAA08C431BA79D2E00A05058 /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
 		AAA08C441BA79D2E00A05058 /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
+		AAA08C461BA7C53D00A05058 /* Review.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Review.h; sourceTree = "<group>"; };
+		AAA08C471BA7C53D00A05058 /* Review.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Review.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +99,8 @@
 				AAA08C1F1BA7701D00A05058 /* ViewController.m */,
 				AAA08C431BA79D2E00A05058 /* DetailViewController.h */,
 				AAA08C441BA79D2E00A05058 /* DetailViewController.m */,
+				AAA08C461BA7C53D00A05058 /* Review.h */,
+				AAA08C471BA7C53D00A05058 /* Review.m */,
 				AAA08C3D1BA7702900A05058 /* Movie.h */,
 				AAA08C3E1BA7702900A05058 /* Movie.m */,
 				AAA08C401BA7786C00A05058 /* MovieCell.h */,
@@ -239,6 +244,7 @@
 				AAA08C1D1BA7701D00A05058 /* AppDelegate.m in Sources */,
 				AAA08C3F1BA7702900A05058 /* Movie.m in Sources */,
 				AAA08C1A1BA7701D00A05058 /* main.m in Sources */,
+				AAA08C481BA7C53D00A05058 /* Review.m in Sources */,
 				AAA08C451BA79D2E00A05058 /* DetailViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
