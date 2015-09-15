@@ -13,6 +13,7 @@
 
 @property (weak, nonatomic) IBOutlet UIImageView *movieImageView;
 @property (weak, nonatomic) IBOutlet UILabel *movieTitleLabel;
+@property (nonatomic) NSURLSessionDownloadTask *downloadTask;
 
 @end
 
@@ -29,21 +30,27 @@
     self.movieTitleLabel.text = movie.movieTitle;
     self.movieImageView.image = nil;
     
+    if (self.downloadTask){
+        [self.downloadTask suspend];
+        [self.downloadTask cancel];
+    }
+    
     NSString *posterString = movie.movieThumbnailURLString;
     NSURL *posterURL = [NSURL URLWithString:posterString];
     
     NSURLSession *session = [NSURLSession sharedSession];
-    NSURLSessionDownloadTask *downloadTask = [session downloadTaskWithURL:posterURL completionHandler:^(NSURL *location, NSURLResponse *response, NSError *error) {
+    self.downloadTask = [session downloadTaskWithURL:posterURL completionHandler:^(NSURL *location, NSURLResponse *response, NSError *error) {
         if (!error) {
-            dispatch_async(dispatch_get_main_queue(), ^{
-                if ([posterString isEqualToString:movie.movieThumbnailURLString]) {
-                    self.movieImageView.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:location]];
-                }
-            });
+            if ([posterString isEqualToString:movie.movieThumbnailURLString]) {
+                UIImage *downloadedImage = [UIImage imageWithData:[NSData dataWithContentsOfURL:location]];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                self.movieImageView.image = downloadedImage;
+                });
+            };
         }
     }];
     
-    [downloadTask resume];
+    [self.downloadTask resume];
 }
 
 @end

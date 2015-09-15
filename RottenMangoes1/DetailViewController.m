@@ -20,6 +20,8 @@
 @property (nonatomic) Review *currentReview;
 @property (nonatomic) NSMutableArray *reviews;
 @property (weak, nonatomic) IBOutlet UILabel *detailReviewsLabel;
+@property (nonatomic) NSURLSessionDownloadTask *downloadTask;
+@property (nonatomic) NSURLSessionDataTask *reviewTask;
 
 @end
 
@@ -56,24 +58,35 @@
         
         self.detailMovieImageView.image = nil;
         
+        if (self.downloadTask){
+            [self.downloadTask suspend];
+            [self.downloadTask cancel];
+        }
+
+        
         NSString *posterString = self.detailItem.moviePosterURLString;
         NSURL *posterURL = [NSURL URLWithString:posterString];
         
         NSURLSession *session = [NSURLSession sharedSession];
-        NSURLSessionDownloadTask *downloadTask = [session downloadTaskWithURL:posterURL completionHandler:^(NSURL *location, NSURLResponse *response, NSError *error) {
+        self.downloadTask = [session downloadTaskWithURL:posterURL completionHandler:^(NSURL *location, NSURLResponse *response, NSError *error) {
             if (!error) {
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    if ([posterString isEqualToString:self.detailItem.moviePosterURLString]) {
-                        self.detailMovieImageView.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:location]];
-                    }
-                });
+                if ([posterString isEqualToString:self.detailItem.moviePosterURLString]) {
+                    UIImage *downloadedImage = [UIImage imageWithData:[NSData dataWithContentsOfURL:location]];
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        self.detailMovieImageView.image = downloadedImage;
+                    });
+                };
             }
         }];
         
-        [downloadTask resume];
+        [self.downloadTask resume];
         
+        if (self.reviewTask){
+            [self.reviewTask suspend];
+            [self.reviewTask cancel];
+        }
         self.reviews = [NSMutableArray new];
-        NSURLSessionTask *reviewTask = [session dataTaskWithURL:[NSURL URLWithString:self.detailItem.movieReviewURL] completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+        self.reviewTask = [session dataTaskWithURL:[NSURL URLWithString:self.detailItem.movieReviewURL] completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
             
             if (!error) {
                 
@@ -95,7 +108,7 @@
             }
         }];
         
-        [reviewTask resume];
+        [self.reviewTask resume];
 
     }
 }
