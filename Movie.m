@@ -19,14 +19,14 @@
     
     self.movieRunTime = json[@"runtime"];
     self.movieSynopsis = json[@"synopsis"];
-    self.movieReviews = json[@""];
+    self.movieReviews = json[@"reviews"];
     self.movieRatings = json[@"ratings"];
 }
 
 - (NSString *)getHighResImageWithURL:(NSString *)urlString {
     NSArray *urlPathComponents = [urlString pathComponents];
     NSArray *trimmedURLPathComponents = [urlPathComponents subarrayWithRange:NSMakeRange(4, urlPathComponents.count-4)];
-    return [NSString pathWithComponents:trimmedURLPathComponents];
+    return [@"http://" stringByAppendingString:[NSString pathWithComponents:trimmedURLPathComponents]];
 }
 
 @end

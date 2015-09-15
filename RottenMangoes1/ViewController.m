@@ -9,6 +9,7 @@
 #import "ViewController.h"
 #import "Movie.h"
 #import "MovieCell.h"
+#import "DetailViewController.h"
 
 
 @interface ViewController () <UICollectionViewDataSource, UICollectionViewDelegate>
@@ -16,6 +17,7 @@
 @property NSMutableArray *movies;
 @property (nonatomic) Movie *currentMovie;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
+@property (nonatomic) CGPoint touchLocation;
 
 @end
 
@@ -68,6 +70,15 @@ NSString * const urlString = @"http://api.rottentomatoes.com/api/public/v1.0/lis
     MovieCell *cell = [cv dequeueReusableCellWithReuseIdentifier:@"MovieCell" forIndexPath:indexPath];
     [cell buildCellWith:self.movies[indexPath.row]];
     return cell;
+}
+
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(MovieCell *)sender {
+    if ([[segue identifier] isEqualToString:@"showDetail"]) {
+        NSIndexPath *indexPath = [self.collectionView indexPathForCell:sender];
+        Movie *object = self.movies[indexPath.row];
+        [[segue destinationViewController] setDetailItem:object];
+    }
 }
 
 #pragma mark - General Methods

@@ -17,7 +17,7 @@
 @property (nonatomic) NSString *movieThumbnailURLString;
 @property (nonatomic) NSString *movieReleaseDate;
 @property (nonatomic) NSString *movieSynopsis;
-@property (nonatomic) NSArray *movieReviews;
+@property (nonatomic) NSString *movieReviews;
 @property (nonatomic) NSDictionary *movieRatings;
 @property (nonatomic) NSString *movieMPAARating;
 
